@@ -8,8 +8,8 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "About Me"
-title_separator          : "-"
+title                    : "Cem Kesisoglu"
+title_separator          : "|"
 name                     : "Cem Kesisoglu"
 description              : "A Recent Industrial Engineering Graduate"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -23,8 +23,8 @@ author:
   # Biographic information
   avatar           : "profile.jpg"
   name             : "Cem Kesisoglu"
-  pronouns         : # example: "she/her"  
-  bio              : "I'm a recent Industrial Engineering graduate with a passion for programming, technology and cooking!"
+  pronouns         : # 
+  bio              : "Recent Industrial Engineering Graduate"
   location         : "Toronto, Canada"
   employer         : "University of Toronto"
   uri              : # URL
