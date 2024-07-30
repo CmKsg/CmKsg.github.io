@@ -15,12 +15,12 @@ This personal website will be where I display my portfolio of projects, keep log
 
 Upcoming Projects
 ======
-Inventory Management Application
+- Inventory Management Application
 
-Personal Optimizer
+- Personal Optimizer
 
-Bot (using LLMs)
+- Bot (using LLMs)
 
-Predictor (with website)
+- Predictor (with website)
 
-Finance bot
+- Finance bot
