@@ -21,7 +21,7 @@ repository               : #
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "/images/profile.jpg"
+  avatar           : "profile.jpg"
   name             : "Cem Kesisoglu"
   pronouns         : # example: "she/her"  
   bio              : "I'm a recent Industrial Engineering graduate with a passion for programming, technology and cooking!"
