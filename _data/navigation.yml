@@ -1,16 +1,16 @@
 # main links links
 main:
   - title: "Portfolio"
-    url: /portfolio/
+    url: /portfolio
     
   - title: "Ongoing Projects"
-    url: /projects/
+    url: /projects
 
   - title: "Research"
-    url: /research/    
+    url: /research   
 
   - title: "Resume"
-    url: /resume/
+    url: /resume
         
   - title: "Miscellaneous"
-    url: /misc/
+    url: /misc
