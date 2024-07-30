@@ -7,12 +7,11 @@ redirect_from:
   - /about.html
 ---
 
-Hi! My name is Cem (pronounced Gem). I am a recent engineering graduate from the Industrial Engineering programming at the University of Toronto. Throughout my degree I specialized in data science, algorithm design, operations research, continuous improvement and risk assessment.
-My professional interests are energy, automation, finance and healthcare, while my personal interests are playing tennis, collecting books and playing video-games!
+Hi! My name is Cem (pronounced Gem). I am a recent engineering graduate from the Industrial Engineering program at the University of Toronto. During undergrad, I pivoted to the information and optimization stream, focusing on algorithm design, operations research, data science and risk analysis. As such, I'm interested in optimization, machine learning, website development and data analysis.
 
-I am highly proficient with Python (numpy, sklearn, gurobi, pandas, pymc), Java (Spring Boot, OOP) and SQL (SQLite, AccessSQL). I have extensive experience conducting data analysis in Python, SQL, Excel (including VBA automation) and R and with software such as Salesforce, JD Edwards and Tableau. 
+I'm proficient with Python, Java, SQL and R. I've primarily worked with algorithm design and operations research, working with MCMC simulations, developing optimization algorithms, working with game theory and writing linear programs.
 
-I've worked with algorithm design and operations research, and have extensive experience in both deterministic and stochastic optimization methods, including conducting MCMC simulations, developing optimization algorithms, writing linear/integer programs and working with game theory.
+This personal website will be where I display my portfolio of projects, keep logs of my ongoing projects and write down any research that I may do. It is linked to both my LinkedIn profile and Github profile, so feel free to check those out!
 
 Upcoming Projects
 ======
