@@ -15,8 +15,7 @@ The goal of this project was to help users choose what games to buy based on rel
 - The third model was a simulation model, where Monte Carlo simulations were used to randomly distribute game release dates and consumer preferences; to better emulate real-world scenarios.
 
 # Details
-<details open>
-<summary>
+<details open><summary>
 ## Data Collection, Parsing and Cleaning
 
 The two data sources we used to comprehensively encompass the data from the video games on Steam are Steam’s official Web API and Steam Spy’s API. The official Web API was accessed from their website, while Steam Spy is a third-party statistics website, and their API is based on the original one. From Steam, we extracted the games’ names, days since release, and Metacritic scores. Then, from Steam Spy, we extracted each game’s ratio of positive reviews and price. The Metacritic score of each game represents its critical reception which is directly correlated to overall reviews, with higher scores indicating more favorable reviews. Then, we modified the Metacritic score into a binary indicator, with 0 being lower than average, and 1 being higher than average. This new modified Metacritic score will be predicted for games with missing scores and releasing games. It is one of the key factors in our optimization model later on to quantify each game’s overall consensus on how good the game is. 
@@ -59,9 +58,8 @@ After narrowing down our prediction method to a random forest classifier, we use
 In the end, while the model was unable to reach particularly high levels of accuracy, it was still able to outperform randomness with an accuracy of 0.33. It achieved a CV mean accuracy, recall, and precision of 0.482, 0.480, and 0.475, respectively. However, the main reason we settled on this model was due to the fact that it was able to avoid the worst form of classification errors, where it would predict high
 engagement games as low engagement and vice versa.
 
-Using a score that gives partial credit of 0.5 for predicting a neighboring class instead of the true class improves the model’s mean accuracy to a more reasonable score of 0.68. This weighted scoring method allows us to properly measure the ability of a model to avoid the worst form of classification errors. Our current random forest model was chosen over the decision tree classifier in part due to its improved weighted score. The vast majority of its misclassifications were for neighboring classes which made the low classification accuracy more tolerable in contrast to other models which were more prone to severe misclassifications.</summary>
-<br>
-</details>
+Using a score that gives partial credit of 0.5 for predicting a neighboring class instead of the true class improves the model’s mean accuracy to a more reasonable score of 0.68. This weighted scoring method allows us to properly measure the ability of a model to avoid the worst form of classification errors. Our current random forest model was chosen over the decision tree classifier in part due to its improved weighted score. The vast majority of its misclassifications were for neighboring classes which made the low classification accuracy more tolerable in contrast to other models which were more prone to severe misclassifications.
+</summary><br></details>
 
 
 
