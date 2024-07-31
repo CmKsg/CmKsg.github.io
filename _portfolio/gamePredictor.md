@@ -1,6 +1,6 @@
 ---
 title: "Game Purchase Support System"
-excerpt: "A Python based program which uses Steam API data to predict game purchases for users<br/><img src='/images/500x300.png'>"
+excerpt: "A Python based program which uses Steam API data to predict game purchases for users.<br/><img src='/images/Portfolio1/BannerPortfolio1.jpg'>"
 collection: portfolio
 ---
 
