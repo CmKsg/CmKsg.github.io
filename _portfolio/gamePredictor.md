@@ -67,3 +67,27 @@ The initial knapsack model made three assumptions. The first assumption was that
 The alpha, beta, and gamma were set to the values above to normalize the utility values, and to ensure equal weight was given to each. Equal weight was deemed important, as sensitivity analysis was conducted on the coefficients, and engagement and Metacritic scores were incorrectly prioritized overall due to their high predicted values compared to similarities. The similarity for the IP was calculated using a randomized dataset of 100 games to emulate a random user in our scenario. The Metacritic score and engagement values were predicted using the prediction modules. This dataset was used for all of the following models.
 
 Using this model, only 7 out of the 19 games were purchased by the user. These games included smaller titles that had less cost associated with them and had high utility scores. The list of games purchased can be seen in the attached Excel file. This preliminary observation was confirmed when the budget constraint was loosened as part of sensitivity analysis, as larger releases with higher prices began being purchased. This model was enough of a solution for a user to determine what games they would want to buy in the year, given that they know their own engagement, similarity, and Metacritic coefficients. However, we wanted to take a further look at what games would be prioritized, given different factors.
+
+### Monthly IP Knapsack
+The initial knapsack was further expanded, with the realism of monthly purchases being added, to address the first assumption. This knapsack still included the other two assumptions from the first model, and added a new one; the user would behave in a greedy manner when purchasing games monthly. The pseudocode can be seen below. To solve this model, the same randomized dataset of games was used to compare the results for the same player.
+
+<br/><img src="/images/Portfolio1/Pseudo1Portfolio1.png">
+
+Using this model, only 4 out of the 19 games were purchased by the user. These games were similar to the initial model, and there was priority given to smaller titles. However, there was also the greedy consumption behavior by the user, where they depleted all of their funds in the 2nd month as they
+purchased the games. This goes in line with expectations, as it showcased how real-world boredom could impact a gamer’s purchase behavior, and how it could be vital for game publishers to release games on time. However, to further improve realism and correlate the model further to real-world situations, release dates, and preference coefficients could be randomly distributed using a Monte Carlo simulation.
+
+### Randomized Monthly Knapsacks
+
+The monthly knapsack was further expanded, with further improvements being added to the monthly purchases. The first assumption in the initial model was completely tackled, as release dates were randomized, according to real-life game releases. Monte Carlo simulations were conducted for release dates using a Poisson distribution, which was chosen since it can be used to model the arrival time of an event such as a game release. The pseudo-code for the simulations can be seen below. 
+
+<br/><img src="/images/Portfolio1/Pseudo2Portfolio1.png">
+
+For this model, the same randomized dataset of games was used to compare the results for the same player. In the release dates simulation model, clear trends were identified across the games. The game “Jujutsu Kaisen Cursed Clash” was purchased 99.7% of the time, which was due to its high utility, caused by high similarity, engagement, and Metacritic scores, as well as its early release date in 2024. Meanwhile, four games were never purchased, with differing causes such as release date and lower utility. 
+
+With the fourth model, another assumption was tackled, and further modifications were added. The factor of fixed and uniform player preferences was replaced with randomized and evolving preferences. Monte Carlo simulations were conducted for the coefficients to randomize them using normal distribution. The pseudocode can be seen below. 
+
+<br/><img src="/images/Portfolio1/Pseudo3Portfolio1.png">
+
+To solve this model, the same randomized dataset of games was used in order to compare the results for the same player. In the coefficients simulation model, similar trends were identified across the games as the release dates model. The same four games were never purchased, and the game “Jujutsu Kaisen Cursed Clash” was purchased 99.5% of the time. However, notably, the game “Like a Dragon: Infinite Wealth” was now the fourth most purchased game, as the consumer’s preferences were towards more similar games within January and April. This means that the consumer prioritized a game they would not have normally given equal preference coefficients.
+
+These two models signify one thing for the user; that for some games, they will always purchase them, however for others, release dates matter. Even though our model does not represent seasonality, the use case is prevalent across the gaming industry. Videogames are purchased the most during holidays, which are concentrated around Fall and Winter. Therefore, the implications of the simulation model can matter greatly for video game publishers, as changing release dates and preference coefficients can greatly impact whether or not a game is purchased. During critical times, companies have to prioritize releasing games on time and targeting the right audience to maximize profits.
