@@ -61,3 +61,4 @@ Using a score that gives partial credit of 0.5 for predicting a neighboring clas
 ## Optimization Models
 ### Integer Programming Knapsack
 The initial knapsack model made three assumptions. The first assumption was that there would be perfect information for the player regarding the exact release dates, and there would be no randomness in those values. The second assumption was that there would be no fluctuation in prices, including no pre-purchase discounts or package deals. The final assumption was that the player would have the same, equal coefficients for Metacritic score, engagement, and similarity. The model was implemented using GurobiPy:
+<br/><img src="/images/Portfolio1/ipPortfolio1">
