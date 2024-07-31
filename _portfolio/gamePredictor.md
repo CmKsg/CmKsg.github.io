@@ -24,8 +24,6 @@ In addition, from Steam Spy, we also extracted the user-defined tags for each ga
 
 Besides Steam, we used data from Sully Gnome, a third-party statistics and analytics website for Twitch, a live-streaming platform where gamers watch gaming influencers and live streamers play. This was to capture more nuances in user preferences when purchasing games. We extracted each game’s average watch time per viewer which we call engagement. We estimated engagement as how much time a player spends watching the game as we found sources that suggested some correlation between engagement in terms of playtime and watchtime. Then, we divided engagement into 3 equal thirds and an indicator of 0, 1, and 2, with 0 being the lowest third, and 2 being the highest third. This will also be predicted and fed into our optimization model to quantify each game’s overall consensus on engagement.
 
-
-
 ## Prediction Models
 
 Given that some games do not possess a Metacritic score or an engagement score due to missing features in the dataset, prediction models are used to fill in the blanks. These prediction models will also be used to generate the required Metacritic and engagement scores for releasing games so that they can be fed into the optimization model.
@@ -60,3 +58,6 @@ engagement games as low engagement and vice versa.
 
 Using a score that gives partial credit of 0.5 for predicting a neighboring class instead of the true class improves the model’s mean accuracy to a more reasonable score of 0.68. This weighted scoring method allows us to properly measure the ability of a model to avoid the worst form of classification errors. Our current random forest model was chosen over the decision tree classifier in part due to its improved weighted score. The vast majority of its misclassifications were for neighboring classes which made the low classification accuracy more tolerable in contrast to other models which were more prone to severe misclassifications.
 
+## Optimization Models
+### Integer Programming Knapsack
+The initial knapsack model made three assumptions. The first assumption was that there would be perfect information for the player regarding the exact release dates, and there would be no randomness in those values. The second assumption was that there would be no fluctuation in prices, including no pre-purchase discounts or package deals. The final assumption was that the player would have the same, equal coefficients for Metacritic score, engagement, and similarity. The model was implemented using GurobiPy:
