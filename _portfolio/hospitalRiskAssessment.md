@@ -24,3 +24,4 @@ As the DM is worried about being able to service their patients if the combinati
 
 The diagram below showcases the decision nodes, the probability nodes and the utility node of the influence diagram. The probabilities associated are located in the Excel file.
 
+<br/><img src="/images/Portfolio2/Diagram1Portfolio2.png">
