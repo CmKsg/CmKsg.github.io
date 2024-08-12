@@ -26,6 +26,8 @@ The RWA problem refers to the assignment of lightpaths to a set of connection re
 
 The variables considered in the RWA problem look at the different aspects of an optical network, such as; the nodes, the links, availability of wavelengths, traffic within the network and the set of nodes that are included in that traffic. A more formal definition of these variables is:
 
+<br/><img src="/images/Portfolio3/RWAVariables&Constraints.png">
+
 For the model to be complete, the decision variables used have to meet the following primary conditions to have a feasible solution:
 
 • _Wavelength Continuity Condition_ - A lightpath uses the same wavelength from its source through to its destination.
@@ -37,7 +39,8 @@ Using the constraints and variables defined, an optimal provisioning plan is gen
 
 Link formulation approaches the problem from sets of incoming and outgoing links of node v. It is defined as an integer programming problem, which maximizes the number of granted requests in the network with the binary variable x.
 
-INSERT IMAGE HERE
+**Integer Program**
+<br/><img src="/images/Portfolio3/LinkFormulation.png">
 
 ## Path Formulation
 
@@ -51,6 +54,10 @@ Path formulation approaches the problems with a different perspective. It initia
         pathTaken has the links and nodes taken in the specific path
       append pathTaken to allPaths (source to destination link, source to destination node)
 return allPaths
+
+**Integer Program**
+
+<br/><img src="/images/Portfolio3/PathFormulation.png">
 
 ### Shortest Path Algorithm (Depth-First Search: Heap Queue)
 
@@ -151,7 +158,3 @@ The efficiency and performance of the algorithms used for this specific RWA prob
 The primary objective in the presented RWA problem is to maximize the number of granted connection requests. This was deemed the primary objective as maximizing the capacity of the telecommunications network by optimizing the number of connection requests granted will drive profits for the company in question. A greater number of connection requests granted directly translates into a higher number of customers who can be serviced on the network.
 
 Network capacity alone does not provide the telecommunication company an accurate depiction of their industry competitiveness. To further evaluate the performance of each algorithm created the runtime will be measured as a key performance indicator of the algorithm designed. Throughout various stages of the algorithm use, comparing the runtime of each of the algorithms will allow a holistic and equitable comparison of the processing time required for the algorithm to produce its deemed optimal solution. Faster algorithms will allow the network to make back-end decisions and processes quicker, thus increasing the speed of services provided to the consumer. The combination of maximizing network capacity and optimizing runtimes will provide a vast and fast network thus providing an overall optimized network experience.
-
-
-
-<br/><img src="/images/Portfolio2/Diagram1Portfolio2.png">
