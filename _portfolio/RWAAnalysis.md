@@ -47,13 +47,15 @@ Link formulation approaches the problem from sets of incoming and outgoing links
 Path formulation approaches the problems with a different perspective. It initially runs an algorithm that defines all possible paths that can be found for the optical network, and then the link formulation IP is solved.
 
 **All paths**:
-  **Input**: SDs
+**Input**: SDs
+<pre>
   for sd in SDs:
     if sd has outgoing and incoming links:
       find pathTaken (sourceToDestination (link) list sourceToDestination (node)list)
         pathTaken has the links and nodes taken in the specific path
       append pathTaken to allPaths (source to destination link, source to destination node)
 return allPaths
+</pre>
 
 **Integer Program**
 
@@ -66,6 +68,7 @@ In order to run the heuristic algorithms to be presented later, a shortest path 
 Since the parent nodes always have lower values than their child node, the heap at the top of the tree, will always be the shortest path possible. The shortest path is found by using a method similar to heap-sort, where higher values are sunk-down in the tree and lower values swim-up. The bottom value is removed from the heap until there are no possible higher values left and the remainder is determined to be the shortest path. This method was implemented due to its efficiency in terms of running time. The algorithm’s theoretical complexity is O(logN), therefore even as the number of paths increases, the algorithm continues to run efficiently.
 
 **ShortestPath:**
+<pre>
   Insert a node into the heap (binary tree) from the SDs
   Searches for another node that has a shorter path
   Swaps the node with the node that has the shorter path
@@ -76,6 +79,7 @@ Since the parent nodes always have lower values than their child node, the heap 
     Pop: Removes the last member on the heap, as it has the longest path
   Repeats until there is one member in the heap
   Returns the shortest path of the node
+</pre> 
 
 While the Depth-First search is built on the process detailed above, the variance in this algorithm starts with the use of the pop function to remove items from the stack, as opposed to the heapsink and heapswim functions used earlier. As paths are explored, the pop function is used to remove the node from the stack. If a destination is not already on the path, it is appended to the stack to ensure no loops are created within the network.
 
@@ -101,10 +105,12 @@ The random wavelength assignment algorithm is a greedy algorithm that assigns th
 
 **Pseudocode**:
 **Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
-  Greedy
+<pre>
+Greedy
   Iterates through each request in the traffic matrix for each nodepair (sorted in accordance to the 2 ∗ (assignednodenumber) + 1
   Assigns each link in a greedy manner to the wavelengths available
   Randomly assigns these links
+</pre> 
 
 ### First-Fit Algorithm
 
@@ -114,29 +120,37 @@ New bins are created in the event that an item does not fit in the bins previous
 
 **Pseudocode**:
 **Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
-  Greedy
+<pre>
+Greedy
   Iterates through each request in the traffic matrix for each nodepair (sorted in accordance to the 2 ∗ (assignednodenumber) + 1
   Assigns each link in a greedy manner to the wavelengths available
   Assign these links in order
+</pre> 
+  
 
 ### First-Fit Decrease Algorithm
 
 A greedy algorithm, very similar to the first-fit algorithm that initially sorts all items in decreasing order, and then runs the first-fit algorithm.
 
 **Pseudocode**:
-**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
-  Greedy
-  Sorts the node pairs in non-decreasing order
-  Creates a new bin
-  Assigns a request into the bin with the least remaining capacity
-    If no bins with enough remaining capacity, creates a new bin
-    Remove path from the request list
-  Returns the number of requests
+**Inputs:** shortestPaths list (generated with R), traffic matrix, wavelength requests
+<pre>
+Greedy
+ Sorts the node pairs in non-decreasing order
+ Creates a new bin
+ Assigns a request into the bin with the least remaining capacity
+   If no bins with enough remaining capacity, creates a new bin
+   Remove path from the request list
+ Returns the number of requests
+</pre>
 
 ### Best-Fit Decreasing
 
+A greedy algorithm, similar to the first-fit algorithm that sorts all items using the best fitting path bins, and optimizing the capacity of those bins.
+
 **Pseudocode**:
-**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
+**Inputs:** shortestPaths list (generated with R), traffic matrix, wavelength requests
+<pre>
  Greedy
  Sorts the node pairs in non-decreasing order
  Creates a new bin
@@ -144,6 +158,7 @@ A greedy algorithm, very similar to the first-fit algorithm that initially sorts
   If no bins with enough remaining capacity, creates a new bin
   Remove path from the request list
  Returns the number of requests
+</pre>
 
 ### Recursive Largest First
 
@@ -153,14 +168,16 @@ As vertices within the network are traveled to/from, the vertices are coloured t
 
 **Pseudocode**:
 **Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
-  Constructs a graph with each nodepair representing a vertex in the graph
-  Generates a partition of the vertices that represents a feasible coloring of the graph
-  Adds vertices to the set
-    The vertex with the highest number of neighboring vertices is added to the set
-    Remove the vertex
-    Repeat until no vertices are left
-  Remove the set of vertices from the graph, if the graph still contains vertices, repeat step 2 and 3
-  Returns the size of the set of vertices
+<pre>
+ Constructs a graph with each nodepair representing a vertex in the graph
+ Generates a partition of the vertices that represents a feasible coloring of the graph
+ Adds vertices to the set
+   The vertex with the highest number of neighboring vertices is added to the set
+   Remove the vertex
+   Repeat until no vertices are left
+ Remove the set of vertices from the graph, if the graph still contains vertices, repeat step 2 and 3
+ Returns the size of the set of vertices
+</pre>
 
 ### Criteria Used for Comparison
 
