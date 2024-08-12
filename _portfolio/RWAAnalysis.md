@@ -22,14 +22,136 @@ The heuristic methods included:
 
 ## Deterministic Influence Diagram
 
-The ED Manager is responsible for overseeing the day-to-day operations of an ED belonging to a hospital in Toronto, Ontario. One of these tasks includes the management of human resources and development of a workforce plan. Workforce planning for an ED is somewhat of a mundane task with established approaches. However, in a week’s time a heat wave is predicted to occur. If Environment Canada is accurate in their weather forecasting, there's a 50% chance the heat wave will start on either July 1st or July 2nd. Should this heat wave occur on July 1st, it will coincide with Canada Day. The ED Manager is particularly concerned about these two events occurring on the same day since they know both Canada Day and heat waves typically bring in more patients to the ED with higher condition severity. The potential of these events happening on the same day could cause strain on the ED staff and increase patient wait times, and present patients with more severe conditions. 
+The RWA problem refers to the assignment of lightpaths to a set of connection requests in an optical network. The purpose of this report is to determine the efficiency of several heuristic algorithms with their solution time of the RWA problem as well as their optimal values.
 
-To help him gain insight on the correlation between heat waves, power outages, Canada Day, and patient arrivals, the ED Manager has the option to hire an Overnight Analyst to study how these factors will impact the number of arrivals to the ED. However, since the Analyst is given such short notice she will charge $4,500 to conduct analysis and write a report on her findings. This information would be useful for the ED Manager since the number of patients per day is a key factor in deciding a plan along with estimated patient severity. 
+The variables considered in the RWA problem look at the different aspects of an optical network, such as; the nodes, the links, availability of wavelengths, traffic within the network and the set of nodes that are included in that traffic. A more formal definition of these variables is:
 
-The ED Manager wants to select a workforce plan so the hospital can minimize labour costs while staying within the Ontario government’s guidelines of treating urgent ED patients within 4 hours and non-urgent patients in 8 hours. Failing to meet this regulation will result in cuts to the ED’s funding in the upcoming year. The ED Manager finds that having a patient-to-nurse ratio of 8:1 or lower helps him achieve this regulation (commonly there is a 4:1 ratio of nurses to directly overseeing patients, this 8:1 averages across high severity patients and low severity patients, as a nurse can handle more of them at once; this also includes nurses required for triaging). They must also consider the already high absenteeism rates among nurses which will be increased due to the holiday. However, they have the option to request 4 hours of additional overtime from nurses currently on shift if not enough nurses are present to meet the estimated patient demand. Nurses are known to agree to overtime 30% of the time and are paid time and a half for their efforts. Given all these factors, the ED Manager must decide between High, Normal, or Low levels of staff by framing this problem using Bayesian decision-making methodologies. 
+For the model to be complete, the decision variables used have to meet the following primary conditions to have a feasible solution:
 
-As the DM is worried about being able to service their patients if the combination of these events were to occur, they are very risk averse. The DM would like to meet all of their patient demand for the lowest cost. Going over budget on cost quickly has diminished impact in the DM’s eyes, as overspending would reflect poorly on them at the hospital. With these two goals in mind, the DM believes their utility function follows a sigmoid function;. U(x) = 11+e-μ(profit), where μ is a constant, shown in Figure 1. This function represents their risk aversion because well performing policies will satisfy needs with diminishing returns, and any inability to meet criteria will swiftly remove the policy from the decision pool.
+• _Wavelength Continuity Condition_ - A lightpath uses the same wavelength from its source through to its destination.
+• _No Wavelength Conflict_ - No two wavelengths with a common link on their path share the same wavelength.
 
-The diagram below showcases the decision nodes, the probability nodes and the utility node of the influence diagram. The probabilities associated are located in the Excel file.
+Using the constraints and variables defined, an optimal provisioning plan is generated. The optimal provision plan would be a feasible plan that has the optimal number of connection requests granted in the network that is defined.
+
+## Link Formulation
+
+Link formulation approaches the problem from sets of incoming and outgoing links of node v. It is defined as an integer programming problem, which maximizes the number of granted requests in the network with the binary variable x.
+
+INSERT IMAGE HERE
+
+## Path Formulation
+
+Path formulation approaches the problems with a different perspective. It initially runs an algorithm that defines all possible paths that can be found for the optical network, and then the link formulation IP is solved.
+
+**All paths**:
+  **Input**: SDs
+  for sd in SDs:
+    if sd has outgoing and incoming links:
+      find pathTaken (sourceToDestination (link) list sourceToDestination (node)list)
+        pathTaken has the links and nodes taken in the specific path
+      append pathTaken to allPaths (source to destination link, source to destination node)
+return allPaths
+
+### Shortest Path Algorithm (Depth-First Search: Heap Queue)
+
+In order to run the heuristic algorithms to be presented later, a shortest path algorithm had to be run. To find these shortest paths, a modified version of the heap-queue algorithm was implemented. The heap-queue algorithm uses a heap-queue, which is a type of tree structure where the parent node has a lower value than its child node.
+
+Since the parent nodes always have lower values than their child node, the heap at the top of the tree, will always be the shortest path possible. The shortest path is found by using a method similar to heap-sort, where higher values are sunk-down in the tree and lower values swim-up. The bottom value is removed from the heap until there are no possible higher values left and the remainder is determined to be the shortest path. This method was implemented due to its efficiency in terms of running time. The algorithm’s theoretical complexity is O(logN), therefore even as the number of paths increases, the algorithm continues to run efficiently.
+
+**ShortestPath:**
+  Insert a node into the heap (binary tree) from the SDs
+  Searches for another node that has a shorter path
+  Swaps the node with the node that has the shorter path
+    Swimup: Does this through divide and conquer
+      Divides the index by 2 of the parent node until there is no longer a larger path in the heap
+    Sinkdown: Does this through divide and conquer
+      Multiplies the index by 2 for the left child and the right child until there is no shorter path in the heap
+    Pop: Removes the last member on the heap, as it has the longest path
+  Repeats until there is one member in the heap
+  Returns the shortest path of the node
+
+While the Depth-First search is built on the process detailed above, the variance in this algorithm starts with the use of the pop function to remove items from the stack, as opposed to the heapsink and heapswim functions used earlier. As paths are explored, the pop function is used to remove the node from the stack. If a destination is not already on the path, it is appended to the stack to ensure no loops are created within the network.
+
+The function designed to find all paths takes the set of all node pairs that have a connection request as well as LD, to determine all paths in the network which satisfy the four above-noted constraints set forth. The output of the function returns a list of all paths in the network.
+
+## Heuristic Methods
+
+Heuristic methods are algorithms that produce a feasible solution to the problem. They allow for a lower running time, but may result in less than the actual optimal value.
+
+### Two-Phase Method
+
+The Two-phase method solves a linear programming problem with artificial variables in standard form with the input of a linear program in standard inequality form. In general, the output of the two-phase method can result in one of the following 3 options:
+
+1. Production of an optimal solution of the linear program.
+2. Production of a parametric solution of the linear program, supporting that the program is unbounded. The value of the objective function can tend to +∞.
+3. Confirmation that the linear program is infeasible as the constraints cannot be satisfied simultaneously.
+
+The initial phase of the method seeks to eliminate the artificial variables from the basis by assigning values of 0 to the original variables and values of -1 to the artificial variables. The output of the first phase is a basic feasible solution used for the second phase. The latter phase introduces the original objective function and works with the simplex algorithm to determine the optimal solution.
+
+### Random Wavelength Assignment
+
+**Pseudocode**:
+**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
+  Greedy
+  Iterates through each request in the traffic matrix for each nodepair (sorted in accordance to the 2 ∗ (assignednodenumber) + 1
+  Assigns each link in a greedy manner to the wavelengths available
+  Randomly assigns these links
+
+### First-Fit Algorithm
+
+The First-Fit algorithm is a greedy algorithm which operates on the notion of packing items into the first bin which can accommodate the item in question. It is greedy, as it only takes into account the immediate gain of packing an item, rather than the future gain of allocating a minimum number of bins.
+
+New bins are created in the event that an item does not fit in the bins previously scanned. While this algorithm proves to improve computing and processing times due to its simplicity, it unfortunately sacrifices significant memory allocation which may create deficiencies of memory available for other required processes.
+
+**Pseudocode**:
+**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
+  Greedy
+  Iterates through each request in the traffic matrix for each nodepair (sorted in accordance to the 2 ∗ (assignednodenumber) + 1
+  Assigns each link in a greedy manner to the wavelengths available
+  Assign these links in order
+
+### First-Fit Decrease Algorithm
+
+A greedy algorithm, very similar to the first-fit algorithm that initially sorts all items in decreasing order, and then runs the first-fit algorithm.
+
+**Pseudocode**:
+**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
+  Greedy
+  Sorts the node pairs in non-decreasing order
+  Creates a new bin
+  Assigns a request into the bin with the least remaining capacity
+    If no bins with enough remaining capacity, creates a new bin
+    Remove path from the request list
+  Returns the number of requests
+
+### Recursive Largest First
+
+The Recursive Largest-First method follows a greedy approach in solving the NP-hard problem of coloring the vertices one at a time, while sequentially building color classes. Vertices and nodes can be used interchangeably to define the basis of network graph formation (RWA network). Specifically, they refer to locations within the network at which data transmissions can travel to or from.
+
+As vertices within the network are traveled to/from, the vertices are coloured to indicate they have been selected in the routing. Subsequent independent sets of vertices not included in the initially determined routing are then construct a new color class to differentiate the route within the network. Within the created color class, the first vertex added is the one with the greatest number of uncoloured neighbors. Subsequent vertices are added to the class to ensure that they have a sufficient number of uncoloured neighbors such that they cannot be added to the created color class.
+
+**Pseudocode**:
+**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
+  Constructs a graph with each nodepair representing a vertex in the graph
+  Generates a partition of the vertices that represents a feasible coloring of the graph
+  Adds vertices to the set
+    The vertex with the highest number of neighboring vertices is added to the set
+    Remove the vertex
+    Repeat until no vertices are left
+  Remove the set of vertices from the graph, if the graph still contains vertices, repeat step 2 and 3
+  Returns the size of the set of vertices
+
+### Criteria Used for Comparison
+
+The efficiency and performance of the algorithms used for this specific RWA problem rely on two primary analyses:
+
+1. The number of connections granted by the algorithm
+2. The runtime measured to produce the output of connections granted
+
+The primary objective in the presented RWA problem is to maximize the number of granted connection requests. This was deemed the primary objective as maximizing the capacity of the telecommunications network by optimizing the number of connection requests granted will drive profits for the company in question. A greater number of connection requests granted directly translates into a higher number of customers who can be serviced on the network.
+
+Network capacity alone does not provide the telecommunication company an accurate depiction of their industry competitiveness. To further evaluate the performance of each algorithm created the runtime will be measured as a key performance indicator of the algorithm designed. Throughout various stages of the algorithm use, comparing the runtime of each of the algorithms will allow a holistic and equitable comparison of the processing time required for the algorithm to produce its deemed optimal solution. Faster algorithms will allow the network to make back-end decisions and processes quicker, thus increasing the speed of services provided to the consumer. The combination of maximizing network capacity and optimizing runtimes will provide a vast and fast network thus providing an overall optimized network experience.
+
+
 
 <br/><img src="/images/Portfolio2/Diagram1Portfolio2.png">
