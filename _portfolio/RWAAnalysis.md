@@ -106,7 +106,6 @@ The random wavelength assignment algorithm is a greedy algorithm that assigns th
 **Pseudocode**:
 **Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
 <pre>
-Greedy
   Iterates through each request in the traffic matrix for each nodepair (sorted in accordance to the 2 ∗ (assignednodenumber) + 1
   Assigns each link in a greedy manner to the wavelengths available
   Randomly assigns these links
@@ -121,7 +120,6 @@ New bins are created in the event that an item does not fit in the bins previous
 **Pseudocode**:
 **Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
 <pre>
-Greedy
   Iterates through each request in the traffic matrix for each nodepair (sorted in accordance to the 2 ∗ (assignednodenumber) + 1
   Assigns each link in a greedy manner to the wavelengths available
   Assign these links in order
@@ -135,7 +133,6 @@ A greedy algorithm, very similar to the first-fit algorithm that initially sorts
 **Pseudocode**:
 **Inputs:** shortestPaths list (generated with R), traffic matrix, wavelength requests
 <pre>
-Greedy
  Sorts the node pairs in non-decreasing order
  Creates a new bin
  Assigns a request into the bin with the least remaining capacity
@@ -151,7 +148,6 @@ A greedy algorithm, similar to the first-fit algorithm that sorts all items usin
 **Pseudocode**:
 **Inputs:** shortestPaths list (generated with R), traffic matrix, wavelength requests
 <pre>
- Greedy
  Sorts the node pairs in non-decreasing order
  Creates a new bin
  Assigns a request into the bin with the least remaining capacity
