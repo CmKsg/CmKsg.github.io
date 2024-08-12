@@ -97,6 +97,8 @@ The initial phase of the method seeks to eliminate the artificial variables from
 
 ### Random Wavelength Assignment
 
+The random wavelength assignment algorithm is a greedy algorithm that assigns the shortest paths randomly.
+
 **Pseudocode**:
 **Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
   Greedy
@@ -130,6 +132,18 @@ A greedy algorithm, very similar to the first-fit algorithm that initially sorts
     If no bins with enough remaining capacity, creates a new bin
     Remove path from the request list
   Returns the number of requests
+
+### Best-Fit Decreasing
+
+**Pseudocode**:
+**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
+ Greedy
+ Sorts the node pairs in non-decreasing order
+ Creates a new bin
+ Assigns a request into the bin with the least remaining capacity
+  If no bins with enough remaining capacity, creates a new bin
+  Remove path from the request list
+ Returns the number of requests
 
 ### Recursive Largest First
 
