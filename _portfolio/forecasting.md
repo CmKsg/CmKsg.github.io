@@ -20,9 +20,7 @@ The primary objective is to use the training data for the closing prices of TME 
 
 Furthermore, the TME closing prices for January 2022 will be forecast using two different methods; double moving average and forecasting using mean reversion. Then, these two methods will be compared using error indicators such as MAPE, MSE and MAD, as well as visual analysis.
 
-~~
-
-<br/><img src="/images/Portfolio3/Diagram1Portfolio4.png">
+<br/><img src="/images/Portfolio4/Portfolio4Diagram1.png">
 
 Throughout 2021, there were 4 different “states” of trend within the TME stock closing prices.
 
@@ -34,7 +32,7 @@ Two different methods were used to forecast the closing prices for January 2022.
 
 Given the highly random nature, and large fluctuations of the stock price, instead of trying to create a model using the closing prices, the two methods instead forecast based on the change in the closing prices. 
 
-~~
+<br/><img src="/images/Portfolio4/Portfolio4Diagram2.png">
 
 From the two graphs, it can be seen that there is no clear average and trend from the closing prices due to the large jumps and fluctuations within the data. This means that a forecast based on this data could be inaccurate, especially with high window size, as there is a large difference between the closing prices of the first three months and the rest of the data.
 
@@ -42,13 +40,11 @@ There is also a visible difference in the variance within the graph of the chang
 
 ## Double Moving Average [Window Size = 55]
 
-~~
-
 Testing all possible window sizes within the range of  2k55 and graphing all the resulting errors generated graphs with 53 different lines within them. This made it impossible to gather any useful information out of the graphs generated. Instead, the MAD and MSE were graphed, and the window size with the lowest errors was chosen.
 
 From observation, there is a clear trend that indicates that window size is inversely proportional to the error, meaning as window size increases, MSE and MAD both decrease. This visual observation was supported by the statistic that the lowest error was when k was equal to 55, where the MAD was 0.296 and MSE was 0.144. Therefore, a window size of 55 was deemed appropriate for the forecast.
 
-~~
+<br/><img src="/images/Portfolio4/Portfolio4Diagram3.png">
 
 When visually analyzing the forecast compared to the future data itself, it can be seen that the trend is the same, as both the forecast and the data trends downwards. There also does not appear to be too much variation between the data and the forecast. These visual observations are supported by the calculation of the MSE, MAD and MAPE, which were 0.359, 0.178 and 5.5% respectively. Therefore, this model is accurate in the sense that it predicts the trend correctly, and has a low amount of error.
 
@@ -58,7 +54,7 @@ This method attempts to take a closer look at the variation and volatility withi
 
 The model itself applies this method by changing the closing prices based on the price difference training data. First, the price difference between day [i-1] and day [i] is predicted by finding the closest value to the initial price difference, then the price difference between day [i] and day [i+1] is predicted by finding out how the price changes following the change in the previous day. This is repeated until the 20th day. For this method, the appropriate window size was deemed to be 200, as at that point the closing price change’s variance had stabilized, and there was a clear downwards trend in the closing price following the trend that occurred after the 24th of March.
 
-~~
+<br/><img src="/images/Portfolio4/Portfolio4Diagram4.png">
 
 It can be seen above, that the forecast (blue) was off-target, as it didn’t have a downwards trend like the actual closing prices (orange), and predicted values that were far from the actual data, and often predicted the opposite of what actually occurred.
 
