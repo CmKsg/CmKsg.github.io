@@ -4,184 +4,62 @@ excerpt: "An algorithm design and numerical methods project, where several algor
 collection: portfolio
 ---
 ## Summary
-For this project, the routing wavelength problem was tackled, which is the optimization of assignment of lightpaths to a set of connection requests in an optic network. This analysis was done through the use of two traditional integer programs and several heuristic algorithms.
+The closing prices for the month of January 2022 for the company Tencent Music Entertainment Group (TME) was forecasted through the use of traditional forecasting methods. First, Exploratory Data Analysis (EDA) was conducting to understand the trends within the 2021 data. Then, through these observations, two methods; the double moving average method and the mean reversion method were chosen to forecast the prices. These methods were then used to predict the closing prices for the month of January 2022. The better forecast, through the use of MSE and visual comparison, was chosen to be the double moving average method.
 
 ## Methodology
-- The first method, which is the link-formulation integer program (IP), was generated. This IP maximizes the number of granted requests in the network, while ensuring that no constraints regarding transmission are violated and no loops are created.
-- The second method, which is the path-formulation IP, was generated. This IP is similar to link-formulation, however first finds the set of all possible paths before the IP is run. The IP therefore maximizes the number of granted requests in the network, while only ensuring that no transmission constraints are violated.
-The heuristic methods included:
-1) The Two-Phase Method
-2) First-Fit Algorithm
-3) First-Fit Decreasing Algorithm
-4) Best-Fit Algorithm
-5) Best-Fit Decreasing Algorithm
-6) Recursive Largest First
-- These algorithms were evaluated against one-another based on the criteria of maximum number of connections granted and runtime. First-fit decreasing was deemed as the optimal algorithm for use.
+- Using EDA, 4 different trends were identified within the TME Closing Prices dataset
+- Forecasting was conducted through the use of the double moving average and mean reversion methods. The double moving average focused on the downwards trend in the closing prices while the mean reversion method focused on the variation within the change in the closing prices.
+- Window sizes, and other parameters were determined through the use of sensitivity analysis and data engineering on the 2021 data.
+- The forecasts were evaluated against the actual data.The double moving average method had a lower MSE, MAE and MAPE, and included a downward trend.
 
 # Details
 
-## Deterministic Influence Diagram
+## Exploratory Data Analysis
 
-The RWA problem refers to the assignment of lightpaths to a set of connection requests in an optical network. The purpose of this report is to determine the efficiency of several heuristic algorithms with their solution time of the RWA problem as well as their optimal values.
+The primary objective is to use the training data for the closing prices of TME from January 1st to December 31st of 2021 in order to forecast the closing prices of January 2022. Throughout the report, the NYSE TME closing prices data from Yahoo Finance will be analyzed and evaluated. As of the 31st December 2021, the stock has a volume of over 12 million shares and a closing price of 6.85$. 
 
-The variables considered in the RWA problem look at the different aspects of an optical network, such as; the nodes, the links, availability of wavelengths, traffic within the network and the set of nodes that are included in that traffic. A more formal definition of these variables is:
+Furthermore, the TME closing prices for January 2022 will be forecast using two different methods; double moving average and forecasting using mean reversion. Then, these two methods will be compared using error indicators such as MAPE, MSE and MAD, as well as visual analysis.
 
-<br/><img src="/images/Portfolio3/RWAVariables&Constraints.png">
+~~
 
-For the model to be complete, the decision variables used have to meet the following primary conditions to have a feasible solution:
+<br/><img src="/images/Portfolio3/Diagram1Portfolio4.png">
 
-• _Wavelength Continuity Condition_ - A lightpath uses the same wavelength from its source through to its destination.
-• _No Wavelength Conflict_ - No two wavelengths with a common link on their path share the same wavelength.
+Throughout 2021, there were 4 different “states” of trend within the TME stock closing prices.
 
-Using the constraints and variables defined, an optimal provisioning plan is generated. The optimal provision plan would be a feasible plan that has the optimal number of connection requests granted in the network that is defined.
+**Trend 1:** There was a sudden increase in the closing prices of Tencent Music during the month of January, which remained stable for a few weeks. This sudden trend was due to the acquisition of Lazy Audio, a music streaming platform, for 415$ million. This purchase was rallied by Wall Street, which caused a jump in the closing price of 38%.
+**Trend 2 and Trend 3:** Following this 38% increase, there was a period of stationarity in the closing prices, until there was a jump on March 15th and a larger fall on March 22nd. This rise and the subsequent fall were both the result of the firm’s announcement that they would create a joint venture record label with Warner Music in China.
+**Trend 4:** Following the sudden crash, there was a period of decline in the stock prices for Tencent as the Chinese government continued to crack down on the tech sector, including the multiple music apps that Tencent owned. There was also increased competition from other brands in the same sector. These factors resulted in a net decrease in the profits of Tencent by 763$ million, followed by a continuous decline in the closing prices.
 
-## Link Formulation
+Two different methods were used to forecast the closing prices for January 2022. The first method was the double moving average method, which predicts closing prices based on previous closing prices for window size k. The second method was based on the mean reversion method which attempted to predict closing prices using the changes that followed a certain value of the closing price for each day.
 
-Link formulation approaches the problem from sets of incoming and outgoing links of node v. It is defined as an integer programming problem, which maximizes the number of granted requests in the network with the binary variable x.
+Given the highly random nature, and large fluctuations of the stock price, instead of trying to create a model using the closing prices, the two methods instead forecast based on the change in the closing prices. 
 
-**Integer Program**
-<br/><img src="/images/Portfolio3/LinkFormulation.png">
+~~
 
-## Path Formulation
+From the two graphs, it can be seen that there is no clear average and trend from the closing prices due to the large jumps and fluctuations within the data. This means that a forecast based on this data could be inaccurate, especially with high window size, as there is a large difference between the closing prices of the first three months and the rest of the data.
 
-Path formulation approaches the problems with a different perspective. It initially runs an algorithm that defines all possible paths that can be found for the optical network, and then the link formulation IP is solved.
+There is also a visible difference in the variance within the graph of the change in the closing prices, as in the first three months, the data is highly varied, and then, the variance starts decreasing over time. The change in the closing prices data seems to be centered around a mean of ~0.
 
-**All paths**:
-**Input**: SDs
-<pre>
-  for sd in SDs:
-    if sd has outgoing and incoming links:
-      find pathTaken (sourceToDestination (link) list sourceToDestination (node)list)
-        pathTaken has the links and nodes taken in the specific path
-      append pathTaken to allPaths (source to destination link, source to destination node)
-return allPaths
-</pre>
+## Double Moving Average [Window Size = 55]
 
-**Integer Program**
+~~
 
-<br/><img src="/images/Portfolio3/PathFormulation.png">
+Testing all possible window sizes within the range of  2k55 and graphing all the resulting errors generated graphs with 53 different lines within them. This made it impossible to gather any useful information out of the graphs generated. Instead, the MAD and MSE were graphed, and the window size with the lowest errors was chosen.
 
-### Shortest Path Algorithm (Depth-First Search: Heap Queue)
+From observation, there is a clear trend that indicates that window size is inversely proportional to the error, meaning as window size increases, MSE and MAD both decrease. This visual observation was supported by the statistic that the lowest error was when k was equal to 55, where the MAD was 0.296 and MSE was 0.144. Therefore, a window size of 55 was deemed appropriate for the forecast.
 
-In order to run the heuristic algorithms to be presented later, a shortest path algorithm had to be run. To find these shortest paths, a modified version of the heap-queue algorithm was implemented. The heap-queue algorithm uses a heap-queue, which is a type of tree structure where the parent node has a lower value than its child node.
+~~
 
-Since the parent nodes always have lower values than their child node, the heap at the top of the tree, will always be the shortest path possible. The shortest path is found by using a method similar to heap-sort, where higher values are sunk-down in the tree and lower values swim-up. The bottom value is removed from the heap until there are no possible higher values left and the remainder is determined to be the shortest path. This method was implemented due to its efficiency in terms of running time. The algorithm’s theoretical complexity is O(logN), therefore even as the number of paths increases, the algorithm continues to run efficiently.
+When visually analyzing the forecast compared to the future data itself, it can be seen that the trend is the same, as both the forecast and the data trends downwards. There also does not appear to be too much variation between the data and the forecast. These visual observations are supported by the calculation of the MSE, MAD and MAPE, which were 0.359, 0.178 and 5.5% respectively. Therefore, this model is accurate in the sense that it predicts the trend correctly, and has a low amount of error.
 
-**ShortestPath:**
-<pre>
-  Insert a node into the heap (binary tree) from the SDs
-  Searches for another node that has a shorter path
-  Swaps the node with the node that has the shorter path
-    Swimup: Does this through divide and conquer
-      Divides the index by 2 of the parent node until there is no longer a larger path in the heap
-    Sinkdown: Does this through divide and conquer
-      Multiplies the index by 2 for the left child and the right child until there is no shorter path in the heap
-    Pop: Removes the last member on the heap, as it has the longest path
-  Repeats until there is one member in the heap
-  Returns the shortest path of the node
-</pre> 
+## Mean Reversion
 
-While the Depth-First search is built on the process detailed above, the variance in this algorithm starts with the use of the pop function to remove items from the stack, as opposed to the heapsink and heapswim functions used earlier. As paths are explored, the pop function is used to remove the node from the stack. If a destination is not already on the path, it is appended to the stack to ensure no loops are created within the network.
+This method attempts to take a closer look at the variation and volatility within the training data of the closing prices and attempts to incorporate some of that variation into the forecast itself. The method was derived using the idea of the mean reversion method, a popular idea that is used by stock market investors. The mean reversion method predicts a trend in the change of the closing price by following the idea that a high closing price discourages investors from investing, while a low closing price encourages them to invest, which means that as closing prices get lower, the likelihood of an increase in the closing price in the next day gets higher, and as the closing prices get higher, the likelihood of a decrease in the closing price in the next day gets higher. 
 
-The function designed to find all paths takes the set of all node pairs that have a connection request as well as LD, to determine all paths in the network which satisfy the four above-noted constraints set forth. The output of the function returns a list of all paths in the network.
+The model itself applies this method by changing the closing prices based on the price difference training data. First, the price difference between day [i-1] and day [i] is predicted by finding the closest value to the initial price difference, then the price difference between day [i] and day [i+1] is predicted by finding out how the price changes following the change in the previous day. This is repeated until the 20th day. For this method, the appropriate window size was deemed to be 200, as at that point the closing price change’s variance had stabilized, and there was a clear downwards trend in the closing price following the trend that occurred after the 24th of March.
 
-## Heuristic Methods
+~~
 
-Heuristic methods are algorithms that produce a feasible solution to the problem. They allow for a lower running time, but may result in less than the actual optimal value.
+It can be seen above, that the forecast (blue) was off-target, as it didn’t have a downwards trend like the actual closing prices (orange), and predicted values that were far from the actual data, and often predicted the opposite of what actually occurred.
 
-### Two-Phase Method
-
-The Two-phase method solves a linear programming problem with artificial variables in standard form with the input of a linear program in standard inequality form. In general, the output of the two-phase method can result in one of the following 3 options:
-
-1. Production of an optimal solution of the linear program.
-2. Production of a parametric solution of the linear program, supporting that the program is unbounded. The value of the objective function can tend to +∞.
-3. Confirmation that the linear program is infeasible as the constraints cannot be satisfied simultaneously.
-
-The initial phase of the method seeks to eliminate the artificial variables from the basis by assigning values of 0 to the original variables and values of -1 to the artificial variables. The output of the first phase is a basic feasible solution used for the second phase. The latter phase introduces the original objective function and works with the simplex algorithm to determine the optimal solution.
-
-### Random Wavelength Assignment
-
-The random wavelength assignment algorithm is a greedy algorithm that assigns the shortest paths randomly.
-
-**Pseudocode**:
-**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
-<pre>
-  Iterates through each request in the traffic matrix for each nodepair (sorted in accordance to the 2 ∗ (assignednodenumber) + 1
-  Assigns each link in a greedy manner to the wavelengths available
-  Randomly assigns these links
-</pre> 
-
-### First-Fit Algorithm
-
-The First-Fit algorithm is a greedy algorithm which operates on the notion of packing items into the first bin which can accommodate the item in question. It is greedy, as it only takes into account the immediate gain of packing an item, rather than the future gain of allocating a minimum number of bins.
-
-New bins are created in the event that an item does not fit in the bins previously scanned. While this algorithm proves to improve computing and processing times due to its simplicity, it unfortunately sacrifices significant memory allocation which may create deficiencies of memory available for other required processes.
-
-**Pseudocode**:
-**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
-<pre>
-  Iterates through each request in the traffic matrix for each nodepair (sorted in accordance to the 2 ∗ (assignednodenumber) + 1
-  Assigns each link in a greedy manner to the wavelengths available
-  Assign these links in order
-</pre> 
-  
-
-### First-Fit Decrease Algorithm
-
-A greedy algorithm, very similar to the first-fit algorithm that initially sorts all items in decreasing order, and then runs the first-fit algorithm.
-
-**Pseudocode**:
-**Inputs:** shortestPaths list (generated with R), traffic matrix, wavelength requests
-<pre>
- Sorts the node pairs in non-decreasing order
- Creates a new bin
- Assigns a request into the bin with the least remaining capacity
-   If no bins with enough remaining capacity, creates a new bin
-   Remove path from the request list
- Returns the number of requests
-</pre>
-
-### Best-Fit Decreasing
-
-A greedy algorithm, similar to the first-fit algorithm that sorts all items using the best fitting path bins, and optimizing the capacity of those bins.
-
-**Pseudocode**:
-**Inputs:** shortestPaths list (generated with R), traffic matrix, wavelength requests
-<pre>
- Sorts the node pairs in non-decreasing order
- Creates a new bin
- Assigns a request into the bin with the least remaining capacity
-  If no bins with enough remaining capacity, creates a new bin
-  Remove path from the request list
- Returns the number of requests
-</pre>
-
-### Recursive Largest First
-
-The Recursive Largest-First method follows a greedy approach in solving the NP-hard problem of coloring the vertices one at a time, while sequentially building color classes. Vertices and nodes can be used interchangeably to define the basis of network graph formation (RWA network). Specifically, they refer to locations within the network at which data transmissions can travel to or from.
-
-As vertices within the network are traveled to/from, the vertices are coloured to indicate they have been selected in the routing. Subsequent independent sets of vertices not included in the initially determined routing are then construct a new color class to differentiate the route within the network. Within the created color class, the first vertex added is the one with the greatest number of uncoloured neighbors. Subsequent vertices are added to the class to ensure that they have a sufficient number of uncoloured neighbors such that they cannot be added to the created color class.
-
-**Pseudocode**:
-**Inputs**: shortestPaths list (generated with R), traffic matrix, wavelength requests
-<pre>
- Constructs a graph with each nodepair representing a vertex in the graph
- Generates a partition of the vertices that represents a feasible coloring of the graph
- Adds vertices to the set
-   The vertex with the highest number of neighboring vertices is added to the set
-   Remove the vertex
-   Repeat until no vertices are left
- Remove the set of vertices from the graph, if the graph still contains vertices, repeat step 2 and 3
- Returns the size of the set of vertices
-</pre>
-
-### Criteria Used for Comparison
-
-The efficiency and performance of the algorithms used for this specific RWA problem rely on two primary analyses:
-
-1. The number of connections granted by the algorithm
-2. The runtime measured to produce the output of connections granted
-
-The primary objective in the presented RWA problem is to maximize the number of granted connection requests. This was deemed the primary objective as maximizing the capacity of the telecommunications network by optimizing the number of connection requests granted will drive profits for the company in question. A greater number of connection requests granted directly translates into a higher number of customers who can be serviced on the network.
-
-Network capacity alone does not provide the telecommunication company an accurate depiction of their industry competitiveness. To further evaluate the performance of each algorithm created the runtime will be measured as a key performance indicator of the algorithm designed. Throughout various stages of the algorithm use, comparing the runtime of each of the algorithms will allow a holistic and equitable comparison of the processing time required for the algorithm to produce its deemed optimal solution. Faster algorithms will allow the network to make back-end decisions and processes quicker, thus increasing the speed of services provided to the consumer. The combination of maximizing network capacity and optimizing runtimes will provide a vast and fast network thus providing an overall optimized network experience.
+The MAD and MSE for this forecast against the actual prices were 1.191 and 2.768, while the MAPE was 19.219%. The MAPE alone showcases how far off the predictions were from the actual data, and since there is also no downwards trend like the actual data, this forecast was not viable.
