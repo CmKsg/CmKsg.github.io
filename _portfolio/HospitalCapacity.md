@@ -1,6 +1,6 @@
 ---
-title: "RWA Analysis of Fiber Network"
-excerpt: "An algorithm design and numerical methods project, where several algorithms were developed and tested on various fiber networks to optimize fiber traffic. <br/>"
+title: "Hospital Load Analysis"
+excerpt: "A simulation and statistical modelling project where a hospitals load and required capacity were evaluated. <br/>"
 collection: portfolio
 ---
 ## Summary
@@ -16,13 +16,13 @@ The performance of different operational strategies to reduce waiting times at C
 
 ### Patient Processing Times
 
-~~
+<br/><img src="/images/Portfolio5/Portfolio5Diagram1.png">
 
 The distribution for acute medicine processing times can be seen on the left. There are a few outliers within the data-set as seen between when t: [20-30]. Within this distribution, the data is not distributed around the mean like a normal distribution. It also does not have it’s peak density when t = 0, and is therefore not exponentially distributed. Therefore, visually, it is seen that the processing times follow log-normal or gamma distribution.
 
 The distribution for acute neuro processing times can be seen on the right. There are a few outliers within the data-set as seen between when t: [15-30]. Much like in medicine, within this distribution, the data is not distributed around the mean like a normal distribution. It also does not have it’s peak density when t = 0, and is therefore not exponentially distributed. Therefore, visually, it is seen that the processing times follow log-normal or gamma distribution.
 
-~~
+<br/><img src="/images/Portfolio5/Portfolio5Diagram2.png">
 
 The distribution for rehab medically complex processing times can be seen on the left. There are a few outliers within the data-set as seen between when t: [50-100]. The data does not have it’s peak density when t = 0, and is therefore not exponentially distributed. The data is around the mean like a normal distribution, however it is still biased towards the left of the mean, implying that it is a log-normal or gamma distribution. 
 
@@ -30,21 +30,23 @@ The distribution for rehab stroke processing times can be seen on the right. The
 
 ### Parameter Analysis
 
+<br/><img src="/images/Portfolio5/Portfolio5Diagram3.png">
+
 As seen in the figures above, the curve of rehabilitation stroke follows an approximately exponential distribution, as even though at the “tails” there is a huge variance between the theoretical and actual data-points, this is explained by the fact that there are only 1000 data points for the distribution and that an exponential distribution is highly variable compared to other distributions. The rest follow approximately log-normal distributions, and are less varied than the exponential distribution, which can be seen visually above. The slight amount of variance at the “tails” can once again be explained by the fact that there are a limited number of data points, and log-normal distribution still has a certain level of variability associated with it.
 
 ### Arrival Data with Mean Arrivals
 
-~~
+<br/><img src="/images/Portfolio5/Portfolio5Diagram4.png">
 
 ## Simio Base Model
 
-~~
+<br/><img src="/images/Portfolio5/Portfolio5Diagram5.png">
 
 The base model, as seen above, has a single source that generates all model entities, 2 acute wards, 4 rehabilitation wards as specified, and a single sink/discharge. For the base model 16 different model entities, representing all the possible routes a patient could take, were utilized. For example, a patient that moves to discharge after Medicine Acute Care is a MedDis entity, while a patient that requires Medically Complex Rehab after MSK acute care is MSKMC.
 
 ## Pooling Model
 
-~~ 
+<br/><img src="/images/Portfolio5/Portfolio5Diagram6.png"> 
 
 As seen above, the structure of the pooling model only has 1 change associated with it. Instead of having multiple servers for rehabilitation, there is only one “pool” of servers, where there is a combined total of 87 capacity in terms of beds available to patients. Besides this, there is no structural or model-related change, besides the fact that the processing times are also increased by 5%. The resulting performance measures can be seen in the following table.
 
