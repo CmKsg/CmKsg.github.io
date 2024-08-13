@@ -1,6 +1,6 @@
 ---
-title: "RWA Analysis of Fiber Network"
-excerpt: "An algorithm design and numerical methods project, where several algorithms were developed and tested on various fiber networks to optimize fiber traffic. <br/>"
+title: "Forecasting Stock Prices"
+excerpt: "An forecasting project in which Tencent Music Entertainment stock prices were predicted using two methods, which were then compared against one another. <br/>"
 collection: portfolio
 ---
 ## Summary
