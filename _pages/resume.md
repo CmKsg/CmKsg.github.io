@@ -8,6 +8,6 @@ redirect_from:
   - /cv/
 ---
 
-[Click Here to Open PDF File](https://cemkesisoglu.github.io/files/cemKesisoglu_Resume.pdf)
-
 <img src="/images/cemKesisoglu_Resume.jpg">
+
+[Click Here to Open PDF File](https://cemkesisoglu.github.io/files/cemKesisoglu_Resume.pdf)
