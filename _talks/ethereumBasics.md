@@ -6,6 +6,8 @@ permalink: /research/ethereumBasics
 date: 2013-03-01
 ---
 
+My research on the basic fundamentals of the Ethereum blockchain.
+
 # Blockchain
 
 Blockchain: is a public database that is updated and shared across multiple computers across one network.
