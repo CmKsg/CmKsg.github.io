@@ -51,8 +51,8 @@ Bridges can be classified into the following categories:
 **Trustless Bridges**: bridges that rely on the blockchains they are connecting to and their validators to transfer messages and tokens. They are trustless because they do not add new trust assumptions, and as a result are considered more secure.
 	**Generalized Message Passing Bridges:** excel with security and transfer more complex data across chains. They are also typically good with cost effectiveness. However, the strengths come at the cost of connectivity for light client bridges and speed drawbacks for optimistic bridges that use fraud proofs.
 	**Liquidity Networks:** these bridges use atomic swaps and are logically verified systems. As a result, they excel with security and speed. Moreover, they are cost-effective and offer good connectivity. However, they cannot pass complex data like generalized message passing bridges can.
-	
-![[Pasted image 20240709120433.png]]
+
+<img src="/researchFiles/20240709120433.png">
 
 **Integrating Bridges to dapps:**
 
@@ -69,9 +69,9 @@ Examples of layer 2 projects include "rollups" on Ethereum and the Lightning Net
 
 Ethereum also functions as a data availability layer for layer 2s. Layer 2 projects will post their data on Ethereum (transactions), relying on Ethereum for data availability. This data is used to dispute transactions or get the state of layer 2.
 
-![[Pasted image 20240708134030.png]]
+<img src="/researchFiles/20240708134030.png">
 
-**==Layer 2==**
+## Layer 2
 
 **Why Layer 2?**
 
@@ -82,9 +82,9 @@ Blockchain is:
 A simple blockchain architecture can only achieve two out of the three. The main goal of layer 2 is to achieve scalability without compromising decentralization and security. When the demand to use Ethereum is high (as it only supports 15 transactions per second), the network becomes congested, increasing transaction fees. Layer 2s are solutions which reduce the fees by processing transactions off the blockchain's layer 1.
 
 **Benefits:**
-![[Pasted image 20240708161708.png]]
-![[Pasted image 20240708161726.png]]
-![[Pasted image 20240708161734.png]]
+<img src="/researchFiles/20240708161708.png">
+<img src="/researchFiles/20240708161726.png">
+<img src="/researchFiles/20240708161734.png">
 
 **How does it work?**
 
@@ -92,7 +92,8 @@ Layer 2 is essentially a separate blockchain that extends Ethereum, handling tra
 
 **Rollups**
 
-![[Untitled 4.avif]]
+<img src="/researchFiles/Untitled 4.avif">
+
 Rollups bundle hundreds of separate transactions into a singular transaction in layer 1. This distributes the L1 transaction fees across everyone in the roll-up, making it cheaper for each user. 
 
 The transaction data is submitted to layer 1, but the execution of the transaction is done by the rollup. By submitting the transaction to layer 1, rollups inherit the security of Ethereum. This is because once the data is uploaded to Ethereum, reverting a rollup requires reverting Ethereum. 
@@ -124,7 +125,7 @@ Rather than programming efficient algorithms to detect MEV opportunities, some s
 
 It is an independent project which extends execution clients with a service that allows searchers to submit MEV transactions to validators without revealing to the public mempool. This prevents transactions from being frontrun.
 
-**==MEV Examples==**
+## MEV Examples
 
 **Decentralized Exchange (DEX) Arbitrage**:
 
