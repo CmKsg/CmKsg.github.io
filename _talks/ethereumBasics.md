@@ -3,7 +3,6 @@ title: "Ethereum Background"
 collection: talks
 type: "Tutorial"
 permalink: /research/ethereumBasics
-date: 2013-03-01
 ---
 
 My research on the basic fundamentals of the Ethereum blockchain.
