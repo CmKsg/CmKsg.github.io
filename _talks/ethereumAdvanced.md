@@ -52,7 +52,7 @@ Bridges can be classified into the following categories:
 	**Generalized Message Passing Bridges:** excel with security and transfer more complex data across chains. They are also typically good with cost effectiveness. However, the strengths come at the cost of connectivity for light client bridges and speed drawbacks for optimistic bridges that use fraud proofs.
 	**Liquidity Networks:** these bridges use atomic swaps and are logically verified systems. As a result, they excel with security and speed. Moreover, they are cost-effective and offer good connectivity. However, they cannot pass complex data like generalized message passing bridges can.
 
-<img src="/researchFiles/20240709120433.png">
+<img src="/researchFiles/Pictures/20240709120433.png">
 
 **Integrating Bridges to dapps:**
 
