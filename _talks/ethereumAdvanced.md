@@ -69,7 +69,7 @@ Examples of layer 2 projects include "rollups" on Ethereum and the Lightning Net
 
 Ethereum also functions as a data availability layer for layer 2s. Layer 2 projects will post their data on Ethereum (transactions), relying on Ethereum for data availability. This data is used to dispute transactions or get the state of layer 2.
 
-<img src="/researchFiles/20240708134030.png">
+<img src="/researchFiles/Pictures/20240708134030.png">
 
 ## Layer 2
 
@@ -82,9 +82,9 @@ Blockchain is:
 A simple blockchain architecture can only achieve two out of the three. The main goal of layer 2 is to achieve scalability without compromising decentralization and security. When the demand to use Ethereum is high (as it only supports 15 transactions per second), the network becomes congested, increasing transaction fees. Layer 2s are solutions which reduce the fees by processing transactions off the blockchain's layer 1.
 
 **Benefits:**
-<img src="/researchFiles/20240708161708.png">
-<img src="/researchFiles/20240708161726.png">
-<img src="/researchFiles/20240708161734.png">
+<img src="/researchFiles/Pictures/20240708161708.png">
+<img src="/researchFiles/Pictures/20240708161726.png">
+<img src="/researchFiles/Pictures/20240708161734.png">
 
 **How does it work?**
 
@@ -92,7 +92,7 @@ Layer 2 is essentially a separate blockchain that extends Ethereum, handling tra
 
 **Rollups**
 
-<img src="/researchFiles/Untitled 4.avif">
+<img src="/researchFiles/Pictures/Untitled 4.avif">
 
 Rollups bundle hundreds of separate transactions into a singular transaction in layer 1. This distributes the L1 transaction fees across everyone in the roll-up, making it cheaper for each user. 
 
