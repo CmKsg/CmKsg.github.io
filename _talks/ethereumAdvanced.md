@@ -5,6 +5,8 @@ type: "Conference proceedings talk"
 permalink: /research/ethereumAdvanced
 ---
 
+A more advanced look at the intricacies of the Ethereum blockchain.
+
 # Bridges
 
 Bridges connect blockchain networks. They enable connectivity and interoperability between blockchains. Blockchains operate in siloed environments, so they cannot trade or communicate with other blockchains naturally.
