@@ -2,7 +2,7 @@
 title: "Ethereum Background"
 collection: talks
 type: "Tutorial"
-permalink: /research/2013-03-01-tutorial-1
+permalink: /research/ethereumBasics
 date: 2013-03-01
 ---
 
