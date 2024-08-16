@@ -31,7 +31,7 @@ Proof-of-stake:
 
 In a high-level, a block contains the following fields:
 
-![[Pasted image 20240706174121.png]]
+<img src="/researchFiles/Pictures/Pasted image 20240706174121.png">
 
 Block time: the amount of time separating blocks, in Ethereum this is divided into twelve second units. However, occasionally validators can be offline, meaning slots can go empty.
 
@@ -50,8 +50,9 @@ Block size: blocks themselves are bounded in size. Each block size has a target 
 - Transactions from an external account to a contract account can trigger code which can execute different actions
 - Do not have private keys, instead purely controlled by logic
 
-**==Fields==**:
-![[Pasted image 20240705180158.png]]
+## Fields:
+<img src="/researchFiles/Pictures/Pasted image 20240705180158.png">
+
 **nonce**: a counter indicating the number of transactions sent from an EOA or the number of contracts created by a contract. Only one transaction with a ] nonce can be executed, protecting against replay attacks where signed transactions are repeatedly broadcast and re-executed.
 
 **balance**: number of wei owned by account.
@@ -74,7 +75,7 @@ Contracts, however, do contain a Merkle Patricia _storage_ trie (as a word-addre
 
 "Compiled smart contract bytecode executes as a number of EVM [opcodes](https://ethereum.org/en/developers/docs/evm/opcodes/), which perform standard stack operations like `XOR`, `AND`, `ADD`, `SUB`, etc. The EVM also implements a number of blockchain-specific stack operations, such as `ADDRESS`, `BALANCE`, `BLOCKHASH`, etc."
 
-![[Untitled 1.avif]]
+<img src="/researchFiles/Pictures/Untitled 1.avif">
 
 # Ether
 
@@ -132,12 +133,12 @@ value: "10000000000"
 
 # Web2 vs. Web3
 
-![[Pasted image 20240705170036.png]]
-![[Pasted image 20240705170132.png]]
+<img src="/researchFiles/Pictures/Pasted image 20240705170036.png">
+<img src="/researchFiles/Pictures/Pasted image 20240705170132.png">
 
 # Consensus Mechanisms
 
-==**Proof of Work:**==
+## Proof of Work:
 
 Ethereum began with a proof-of-work consensus mechanism (well known to also be Bitcoin's mechanism). This allowed nodes to agree on the state of all information recorded on the blockchain and prevented economic attacks. 
 
@@ -157,7 +158,7 @@ Proof of work also produced Ethereum, with miners gaining 2 ETH for mining a blo
 
 Transactions rejected on the temporary fork may not have been included in the accepted chain. This means it could get reversed. So **finality** refers to the time you should wait before considering a transaction irreversible. The more blocks that were mined meant a higher confidence in a transaction being final, meaning a probabilistic association was created with it.
 
-**==Proof of Stake:==**
+## Proof of Stake:
 
 Proof of stake works purely off of validators, who check for the validity of new blocks propagated into the blockchain, and occasionally create and propagate their own blocks. If they try to defraud, their ETH will be destroyed (32 ETH).
 
@@ -184,7 +185,7 @@ A transaction has finality in distributed networks, when it is part of a block t
 
 When the network performs optimally and honestly, there is only ever one new block at the head of the chain, and all validators attest to it. However, it is possible for validators to have different views of the head of the chain due to network latency or because a block proposer has equivocated. Therefore, consensus clients require an algorithm to decide which one to favor.
 
-**==Proof of Authority:==**
+## Proof of Authority:
 
 Proof of authority is a modified version of PoS, that is a reputation based algorithm. In the genesis block, a set of authorized signers are trusted. All authorized signers maintain equal power and privileges when determining consensus. They are selected based on their reputation, and are the only ones allowed to create new blocks. The reputation is human based, rather than algorithm based. 
 
@@ -192,14 +193,14 @@ Proof of authority is a modified version of PoS, that is a reputation based algo
 
 **dapps**: a dapp is an application built on a decentralized network that uses back-end smart contracts and front-end interfaces. On Ethereum, smart contracts are transparent, like open APIs, so your smart contract can include someone else's smart contract.
 
-**==Properties:==**
+## Properties:
 
 **Decentralized**: dapps operate on Ethereum, so no-one and no group has control over it. This also means that once you upload a dapp, you cannot take it back
 **Deterministic**: dapps perform the same function each time given the parameters
 **Turing complete**: dapps can perform any action given required resources
 **Isolated**: dapps are executed on the EVM, which is a virtual environment preventing it from having consequential effects on the blockchain
 
-**==Benefits==**:
+## Benefits:
 
 **Zero downtime**: because they cannot be taken back and are constantly present on the blockchain, they do not have downtime
 **Privacy**: you can access dapps anonymously
@@ -207,7 +208,7 @@ Proof of authority is a modified version of PoS, that is a reputation based algo
 **Complete data integrity**: data on the blockchain is immutable and indisputable, which means that malicious actors cannot forge transactions or alter data that has been made public
 **Trustless computation and verifiable behavior**: smart contracts can be analyzed and guaranteed to execute in predictable ways, without needing to trust a central authority. 
 
-**==Drawbacks==**:
+## Drawbacks:
 
 **Maintenance**: dapps are hard to maintain and update, as code and data published to the blockchain is harder to modify. It's hard for developers to make updates if bugs and security risks are identified in an old version.
 **Performance overhead:** scaling is really hard, to achieve the level of security, integrity, transparency and reliability that Ethereum aspires to have, every node runs and stores every transaction.
@@ -227,7 +228,7 @@ A client is an implementation of Ethereum that verifies data against protocol ru
 
 These clients work together to keep track of the head of the chain, and allow for users to interact with the network. This approach makes it easier to develop and maintain software, and enables the reuse of individual clients.
 
-![[Untitled 2.avif]]
+<img src="/researchFiles/Pictures/Untitled 2.avif">
 
 **Client Diversity**: both execution and consensus clients exist in a variety of programming languages, developed by different teams.
 
@@ -265,7 +266,7 @@ Light clients are currently in an area of development for Ethereum, and new ligh
 
 Synchronization modes represent the different approaches to doing this, and the trade-offs with each approach.
 
-**==Execution Layer Synchronization Modes:==** 
+## Execution Layer Synchronization Modes: 
 
 **Full Archive Sync**h**: download all blocks and generate the state of the blockchain incrementally by executing every block from genesis.
 - Minimizes the dependence on trust, and maximizes the security by verifying each transaction.
@@ -279,18 +280,19 @@ Synchronization modes represent the different approaches to doing this, and the 
 - Gets only the latest state while relying on trust in developers and consensus mechanism
 - Client ready to use with current network state in a few minutes
 
-**==Consensus Layer Synchronization Modes:==**
+## Consensus Layer Synchronization Modes:
 
 **Optimistic Synch:** post-merge synchronization allows execution nodes to synch via established methods. 
 
-==**Nodes as a Service:**== as known, stakers can run nodes to support the proof-of-stake model for Ethereum, where solo stakers must run the consensus and execution client from their own system. 
+## Nodes as a Service: as known, stakers can run nodes to support the proof-of-stake model for Ethereum, where solo stakers must run the consensus and execution client from their own system. 
 
 Node service providers, which are for non-staking nodes, run distributed node clients behind the scenes, providing API keys to users to read and write to the blockchain. Almost all of these services are extremely easy to integrate with.
 
-==**Node Architecture**==
+## Node Architecture
 
 An Ethereum node is comprised of a consensus and execution client, compared to the proof-of-work method of just an execution client. The diagram below shows the relationship between the execution and consensus client:
-![[Untitled 3.avif]]
+
+<img src="/researchFiles/Pictures/Untitled 3.avif">
 
 The **execution client** is responsible for transaction handling, transaction gossip, state management and supporting EVM. However, it is not responsible for block building, block gossiping or consensus logic. 
 
@@ -308,9 +310,11 @@ Similar to the execution client, consensus clients have their own P2P network th
 
 The consensus client does not participate in attesting to or proposing blocks (a validators job). A consensus client without a validator only keeps up with the head of the chain, allowing the node to stay synced. This enables a user to transact with Ethereum using their execution client, confident that they are on the correct chain.
 
-![[Pasted image 20240707102553.png]]**Note:** gossiping is an information dissemination technique similar to how epidemics spread, where each user spreads information from one to the next.
+<img src="/researchFiles/Pictures/Pasted image 20240707102553.png">
 
-==**Light Clients:**== a light node is a node running a light client software. It is essentially keeping the necessary information for each block, rather than the full blocks that a full node or archive node does. 
+**Note:** gossiping is an information dissemination technique similar to how epidemics spread, where each user spreads information from one to the next.
+
+## Light Clients: a light node is a node running a light client software. It is essentially keeping the necessary information for each block, rather than the full blocks that a full node or archive node does. 
 
 *How do light clients work?* 
 
@@ -334,7 +338,7 @@ It is also good for rollups (see Level 2), which will be less prone to hacks tar
 
 Finally, light clients can be used to upgrade wallets. Instead of depending on data provided from an RPC provider, your wallet could directly verify the data being presented.
 
-==**Archive Nodes:**==
+## Archive Nodes:
 
 The global data with information about each account and contract is stored in a database called state. This is handled by the execution layer client and includes:
 - Account balances and nonces
