@@ -82,6 +82,7 @@ Blockchain is:
 A simple blockchain architecture can only achieve two out of the three. The main goal of layer 2 is to achieve scalability without compromising decentralization and security. When the demand to use Ethereum is high (as it only supports 15 transactions per second), the network becomes congested, increasing transaction fees. Layer 2s are solutions which reduce the fees by processing transactions off the blockchain's layer 1.
 
 **Benefits:**
+
 <img src="/researchFiles/Pictures/Pasted image 20240708161708.png">
 <img src="/researchFiles/Pictures/Pasted image 20240708161726.png">
 <img src="/researchFiles/Pictures/Pasted image 20240708161734.png">
