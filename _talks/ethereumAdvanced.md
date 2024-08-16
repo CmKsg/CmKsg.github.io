@@ -219,7 +219,7 @@ Data requests will usually answer some or all of the following questions:
 
 **Oracle Nodes:** the off-chain component for the oracle service. It extracts information from external resources, such as APIs and put's it on-chain for consumption by smart contracts. It essentially acts as a GET request for smart contracts.
 
-==**Design Patterns:**== 
+## Design Patterns:
 
 **Publish Subscribe**
 
@@ -229,7 +229,7 @@ This type of oracle exposes a data feed which other contracts can regularly read
 
 This type allows the client contract to request arbitrary data other than that provided by a publish-subscribe oracle. Ideal when the dataset is too large to be stored in a smart contract's storage.
 
-==**Centralized vs. Decentralized:**== 
+## Centralized vs. Decentralized:
 
 **Centralized Oracles:**
 
