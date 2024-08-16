@@ -3,7 +3,6 @@ title: "Advanced Ethereum"
 collection: talks
 type: "Conference proceedings talk"
 permalink: /research/ethereumAdvanced
-date: 2014-03-01
 ---
 
 # Bridges
