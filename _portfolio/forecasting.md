@@ -59,3 +59,5 @@ The model itself applies this method by changing the closing prices based on the
 It can be seen above, that the forecast (blue) was off-target, as it didn’t have a downwards trend like the actual closing prices (orange), and predicted values that were far from the actual data, and often predicted the opposite of what actually occurred.
 
 The MAD and MSE for this forecast against the actual prices were 1.191 and 2.768, while the MAPE was 19.219%. The MAPE alone showcases how far off the predictions were from the actual data, and since there is also no downwards trend like the actual data, this forecast was not viable.
+
+[Click Here to Open the Folder Containing the Python Code](https://cemkesisoglu.github.io/code)
