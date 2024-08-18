@@ -1,5 +1,5 @@
-import GurobiSPsSolveRWA_Group11 as gsolveSP
-import GurobiSolveRWA_Group11 as gsolve
+import GurobiSPsSolveRWA as gsolveSP
+import GurobiSolveRWA as gsolve
 import random
 import time
 
