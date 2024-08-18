@@ -1,6 +1,6 @@
-import GurobiSolveRWA_Group11 as gurobiSolveRWA
-import HeuristicSolveRWA_Group11 as heuristicSolveRWA
-import GurobiSPsSolveRWA_Group11 as gurobiSPsSolveRWA
+import GurobiSolveRWA as gurobiSolveRWA
+import HeuristicSolveRWA as heuristicSolveRWA
+import GurobiSPsSolveRWA as gurobiSPsSolveRWA
 import time
 
 def SolveRWA(inputfile,method,W):
