@@ -60,4 +60,4 @@ It can be seen above, that the forecast (blue) was off-target, as it didn’t ha
 
 The MAD and MSE for this forecast against the actual prices were 1.191 and 2.768, while the MAPE was 19.219%. The MAPE alone showcases how far off the predictions were from the actual data, and since there is also no downwards trend like the actual data, this forecast was not viable.
 
-[Click Here to Open the Folder Containing the Python Code](https://cemkesisoglu.github.io/code)
+[Click Here to Open the Folder Containing the Python Code](https://github.com/CemKesisoglu/CemKesisoglu.github.io/tree/master/code)
