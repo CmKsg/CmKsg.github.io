@@ -1,4 +1,4 @@
-import GurobiSolveRWA_Group11 as gsolve
+import GurobiSolveRWA as gsolve
 import math
 from gurobipy import *
 
