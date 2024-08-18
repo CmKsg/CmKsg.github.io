@@ -1,4 +1,4 @@
-import SolveRWA_Group11 as solveRWA
+import SolveRWA as solveRWA
 import os
 import matplotlib.pyplot as plt
 
