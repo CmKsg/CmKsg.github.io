@@ -81,4 +81,4 @@ The probability distributions, along with the code for them, can be found in the
 
 The resulting decision was to not hire an analyst, have an average number of staff and not request overtime.
 
-[Click Here to Open the Folder Containing the Python Code](https://cemkesisoglu.github.io/code)
+[Click Here to Open the Folder Containing the Python Code](https://github.com/CemKesisoglu/CemKesisoglu.github.io/tree/master/code)
