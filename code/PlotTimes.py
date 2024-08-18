@@ -1,8 +1,8 @@
 import time
 import numpy as np
 from numpy import random
-import GurobiSolveRWA_Group11 as gsolve
-import HeuristicSolveRWA_Group11 as genericsolve
+import GurobiSolveRWA as gsolve
+import HeuristicSolveRWA as genericsolve
 import matplotlib.pyplot as plt
 
 def generateInstance_Group11(filename, lamb, omega, i): # generates an instance based on a basefile that is provided
