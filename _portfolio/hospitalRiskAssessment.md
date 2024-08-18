@@ -80,3 +80,5 @@ In PyMC, the model used is a Bayesian network that is run multiple times for all
 The probability distributions, along with the code for them, can be found in the Python files provided.
 
 The resulting decision was to not hire an analyst, have an average number of staff and not request overtime.
+
+[Click Here to Open the Folder Containing the Python Code](https://cemkesisoglu.github.io/code)
