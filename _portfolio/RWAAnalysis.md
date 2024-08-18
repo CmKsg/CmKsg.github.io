@@ -186,4 +186,4 @@ The primary objective in the presented RWA problem is to maximize the number of 
 
 Network capacity alone does not provide the telecommunication company an accurate depiction of their industry competitiveness. To further evaluate the performance of each algorithm created the runtime will be measured as a key performance indicator of the algorithm designed. Throughout various stages of the algorithm use, comparing the runtime of each of the algorithms will allow a holistic and equitable comparison of the processing time required for the algorithm to produce its deemed optimal solution. Faster algorithms will allow the network to make back-end decisions and processes quicker, thus increasing the speed of services provided to the consumer. The combination of maximizing network capacity and optimizing runtimes will provide a vast and fast network thus providing an overall optimized network experience.
 
-[Click Here to Open the Folder Containing the Python Code](https://cemkesisoglu.github.io/code)
+[Click Here to Open the Folder Containing the Python Code](https://github.com/CemKesisoglu/CemKesisoglu.github.io/tree/master/code)
