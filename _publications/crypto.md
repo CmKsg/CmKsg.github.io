@@ -19,4 +19,6 @@ An issue regarding data from Defillama compared to CoinGecko is a mismatch in in
 
 These top protocols also often consisted of multiple entries under the same main protocol; for example AAVE had both AAVE v2 and AAVE v3 operating with the same native currency. Thus, these had to be combined in Pandas manually as well.
 
-The resulting dataframe, for selected protocols was the following:
+The resulting dataframe, for selected protocols is the following:
+
+<br/><img src="/images/crypto.png">
