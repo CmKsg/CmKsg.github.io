@@ -15,12 +15,5 @@ This personal website will be where I display my portfolio of projects, keep log
 
 Upcoming Projects
 ======
-- Inventory Management Application
-
-- Personal Optimizer
-
-- Bot (using LLMs)
-
-- Predictor (with website)
-
-- Finance bot
+- Crypto Data Backend
+- Stock Data Correlation Analysis
