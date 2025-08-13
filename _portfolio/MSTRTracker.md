@@ -17,7 +17,7 @@ Due to this work being done for my client, I cannot share the exact code for thi
 
 Below are a few example images of the dashboard:
 
-### Cost Basis:
+### Cost Basis vs. Price:
 <br/><img src="/images/Portfolio6/CostBasisGraph.jpeg">
 
 ### Acquisitions vs. Price:
