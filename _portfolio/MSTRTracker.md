@@ -18,16 +18,16 @@ Due to this work being done for my client, I cannot share the exact code for thi
 Below are a few example images of the dashboard:
 
 ### Cost Basis:
-<br/><img src="/images/Portfolio6/CostBasisGraph.png">
+<br/><img src="/images/Portfolio6/CostBasisGraph.jpeg">
 
 ### Acquisitions vs. Price:
-<br/><img src="/images/Portfolio6/AcquisitionsAndPriceGraph.png">
+<br/><img src="/images/Portfolio6/AcquisitionsAndPriceGraph.jpeg">
 
 ### Total Holdings Over Time:
-<br/><img src="/images/Portfolio6/HoldingsGraph.png">
+<br/><img src="/images/Portfolio6/HoldingsGraph.jpeg">
 
 ### NAV Premium:
-<br/><img src="/images/Portfolio6/NAVPremiumGraph.png">
+<br/><img src="/images/Portfolio6/NAVPremiumGraph.jpeg">
 
 ### NAV Premium Against Market Cap:
-<br/><img src="/images/Portfolio6/NAVvsMCapGraph.png">
+<br/><img src="/images/Portfolio6/NAVvsMCapGraph.jpeg">
